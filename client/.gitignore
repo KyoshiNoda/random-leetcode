@@ -36,7 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Ignore PocketBase executable
-pocketbase.exe
+pocketbase
 
 # Ignore database files and logs
 pb_data/
