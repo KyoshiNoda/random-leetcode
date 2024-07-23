@@ -13,7 +13,7 @@ export interface Question {
   
   export interface Filters {
     name?: string;
-    topic?: string[];
+    topics?: string[];
     comfort_level?: string;
     difficulty?: string;
   }

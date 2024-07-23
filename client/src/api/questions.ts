@@ -17,8 +17,8 @@ export const getFilteredQuestions = async (
   filters: Filters = {}
 ): Promise<Question[]> => {
   await pb.admins.authWithPassword(
-    `${process.env.POCKETBASE_USER}`,
-    `${process.env.POCKETBASE_PASSWORD}`
+    `${import.meta.env.VITE_POCKETBASE_USERNAME}`,
+    `${import.meta.env.VITE_POCKETBASE_PASSWORD}`
   );
   const filterQuery = buildFilterQuery(filters);
 

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+pocketbase
+pb_data/
+pb_migrations/
+.env
+pocketbase_bin
