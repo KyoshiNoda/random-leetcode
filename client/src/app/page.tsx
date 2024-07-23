@@ -22,7 +22,7 @@ export default async function Home() {
             <ComfortFilter />
           </div>
         </div>
-        <button className="bg-green-500 p-3 w-1/2 rounded-2xl shadow-lg hover:bg-green-600">Generate</button>
+        <button className="bg-green-500 p-3 w-1/2 rounded-2xl shadow-lg hover:bg-green-600 text-2xl font-bold">Generate</button>
         <QuestionResult />
       </div>
     </>
