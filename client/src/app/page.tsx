@@ -1,6 +1,7 @@
 import TopicList from "@/components/TopicList";
+import { getToken } from "./api/auth";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <div className="flex flex-col h-screen w-screen bg-gradient-to-t from-color1 to-color2 items-center gap-20">
