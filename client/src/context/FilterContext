@@ -1,0 +1,42 @@
+"use client";
+import React, { createContext, useState, ReactNode } from "react";
+
+interface FilterContextProps {
+  selectedTopics: string[];
+  setSelectedTopics: React.Dispatch<React.SetStateAction<string[]>>;
+  difficulty: string;
+  setDifficulty: React.Dispatch<React.SetStateAction<string>>;
+  comfortLevel: string;
+  setComfortLevel: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const FilterContext = createContext<FilterContextProps | undefined>(undefined);
+
+export const FilterProvider = ({ children }: { children: ReactNode }) => {
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [comfortLevel, setComfortLevel] = useState<string>("");
+
+  return (
+    <FilterContext.Provider
+      value={{
+        selectedTopics,
+        setSelectedTopics,
+        difficulty,
+        setDifficulty,
+        comfortLevel,
+        setComfortLevel,
+      }}
+    >
+      {children}
+    </FilterContext.Provider>
+  );
+};
+
+export const useFilter = () => {
+  const context = React.useContext(FilterContext);
+  if (!context) {
+    throw new Error("useFilter must be used within a FilterProvider");
+  }
+  return context;
+};

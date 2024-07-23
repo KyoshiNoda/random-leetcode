@@ -1,4 +1,4 @@
-const TopicList = async () => {
+const TopicFilter = async () => {
 
   return (
     <div className="flex gap-4 flex-wrap">
@@ -59,4 +59,4 @@ const TopicList = async () => {
     </div>
   );
 };
-export default TopicList;
+export default TopicFilter;
