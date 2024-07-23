@@ -1,5 +1,5 @@
 import TopicList from "@/components/TopicList";
-import { getToken } from "./api/auth";
+import QuestionResult from "@/components/QuestionResult";
 
 export default async function Home() {
   return (
@@ -10,6 +10,8 @@ export default async function Home() {
         </h1>
         <div className="w-1/2">
           <TopicList />
+
+          <QuestionResult />
         </div>
       </div>
     </>

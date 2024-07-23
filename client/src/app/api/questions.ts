@@ -1,21 +1,43 @@
-import { getToken } from "./auth";
+import PocketBase from "pocketbase";
+import { Filters, Question } from "../../types/types";
+const pb = new PocketBase("http://127.0.0.1:8090");
 
-export const getQuestions = async () => {
-  const token = await getToken();
-  const response = await fetch(
-    "http://127.0.0.1:8090/api/collections/questions/records",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
+const buildFilterQuery = (filters: Filters) => {
+  const filterConditions = Object.entries(filters).map(([key, value]) => {
+    if (Array.isArray(value)) {
+      return value.map((item) => `${key}~"${item}"`).join(" || ");
     }
-  );
+    return `${key}="${value}"`;
+  });
 
-  if (!response.ok) {
-    console.log("error");
+  return filterConditions.join(" && ");
+};
+
+export const getFilteredQuestions = async (
+  filters: Filters = {}
+): Promise<Question[]> => {
+  await pb.admins.authWithPassword(
+    `${process.env.POCKETBASE_USER}`,
+    `${process.env.POCKETBASE_PASSWORD}`
+  );
+  const filterQuery = buildFilterQuery(filters);
+
+  const records = await pb.collection("questions").getFullList<Question>({
+    filter: filterQuery,
+    sort: "-created",
+  });
+
+  return records;
+};
+
+export const getRandomQuestion = async (
+  filters: Filters = {}
+): Promise<Question | null> => {
+  const questions = await getFilteredQuestions(filters);
+  if (questions.length === 0) {
+    return null;
   }
 
-  const data = await response.json();
-  return data;
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  return questions[randomIndex];
 };
