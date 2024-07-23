@@ -1,9 +1,6 @@
-import { getRandomQuestion } from "@/app/api/questions";
-import { Question } from "@/types/types";
-interface QuestionResultProps {
-  question: string;
-}
-const QuestionResult = async () => {
+import { getRandomQuestion } from "../api/questions";
+import { Question } from "../types";
+const QuestionResult = () => {
   const question: Question | null = await getRandomQuestion({
     difficulty: "easy",
     topic: ["Array Hashing"],

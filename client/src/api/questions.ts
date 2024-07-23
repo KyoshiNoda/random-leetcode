@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
-import { Filters, Question } from "../../types/types";
+import { Filters, Question } from "../types";
 const pb = new PocketBase("http://127.0.0.1:8090");
 
 const buildFilterQuery = (filters: Filters) => {
