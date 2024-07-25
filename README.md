@@ -3,5 +3,6 @@
 - This project is something, I will use for reinforced learning!
 - Easy access by clicking on the question with directly links me the question itself on leetcode.
 - In the future, I may open this up for other users to use themselves :) 
-<img width="1512" alt="Screenshot 2024-07-24 at 10 04 54 PM" src="https://github.com/user-attachments/assets/f30c17e3-c939-4286-a216-946bbb6ad2b4">
 <img width="1512" alt="Screenshot 2024-07-24 at 10 16 29 PM" src="https://github.com/user-attachments/assets/02d6c35e-ebd0-465d-99b1-6f96e9d09c55">
+
+<img width="1511" alt="Screenshot 2024-07-24 at 10 18 33 PM" src="https://github.com/user-attachments/assets/f46cd39f-b3c3-43e5-95a2-d2b8ff586d59">
