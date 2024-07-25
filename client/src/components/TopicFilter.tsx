@@ -1,24 +1,5 @@
+import { topics } from "../globals/global";
 const TopicFilter = ({ selectedTopics, setSelectedTopics }: any) => {
-  const topics = [
-    "Arrays Hashing",
-    "Two Pointers",
-    "Sliding Window",
-    "Stack",
-    "Binary Search",
-    "Linked List",
-    "Trees",
-    "Heap/ Priority Queue",
-    "Backtracking",
-    "Tries",
-    "Graphs",
-    "Advanced Graphs",
-    "1-D Dynamic Programming",
-    "2-D Dynamic Programming",
-    "Greedy",
-    "Intervals",
-    "Math & Geometry",
-    "Bit Manipulation",
-  ];
 
   const handleTopicChange = (topic: any) => {
     setSelectedTopics((prev: any) =>

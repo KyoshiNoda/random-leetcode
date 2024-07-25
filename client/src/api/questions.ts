@@ -23,11 +23,13 @@ export const getFilteredQuestions = async (
     `${import.meta.env.VITE_POCKETBASE_PASSWORD}`
   );
   const filterQuery = buildFilterQuery(filters);
+  console.log(filterQuery);
 
   const records = await pb.collection("questions").getFullList<Question>({
     filter: filterQuery,
     sort: "-created",
   });
+  console.log(records);
   return records;
 };
 

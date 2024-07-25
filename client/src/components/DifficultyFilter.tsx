@@ -1,12 +1,12 @@
+import { difficultyLevels } from "../globals/global";
 const DifficultyFilter = ({
   selectedDifficulty,
   setSelectedDifficulty,
 }: any) => {
-  const difficulties = ["easy", "medium", "hard"];
 
   return (
     <div className="flex gap-3 flex-wrap">
-      {difficulties.map((difficulty) => {
+      {difficultyLevels.map((difficulty) => {
         let bgColor;
         switch (difficulty) {
           case "easy":

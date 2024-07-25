@@ -1,9 +1,8 @@
+import { comfortLevels } from "../globals/global";
 const ComfortFilter = ({ selectedComfort, setSelectedComfort }: any) => {
-  const comforts = ["low", "medium", "high"];
-
   return (
     <div className="flex gap-3 flex-wrap">
-      {comforts.map((comfort) => {
+      {comfortLevels.map((comfort) => {
         let bgColor;
         switch (comfort) {
           case "low":

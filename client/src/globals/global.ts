@@ -1,6 +1,6 @@
-export const comfortLevels = ["Low", "Medium", "High"];
+export const comfortLevels = ["low", "medium", "high"];
 
-export const difficultyLevels = ["Easy", "Medium", "Hard"];
+export const difficultyLevels = ["easy", "medium", "hard"];
 
 export const topics = [
   "Arrays Hashing",
