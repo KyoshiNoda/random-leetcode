@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getRandomQuestion } from "../api/questions";
-import { Question } from "../types";
+import { Question } from "../globals/types";
 
 const QuestionResult = ({ filters }: any) => {
   const [question, setQuestion] = useState<Question | null>(null);

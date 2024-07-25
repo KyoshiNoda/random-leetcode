@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { FaRegPlusSquare } from "react-icons/fa";
 import TopicFilter from "./components/TopicFilter";
 import ComfortFilter from "./components/ComfortFilter";
 import QuestionResult from "./components/QuestionResult";
 import DifficultyFilter from "./components/DifficultyFilter";
+import AddQuestion from "./components/AddQuestion";
 
 export default function Home() {
   const [selectedTopics, setSelectedTopics] = useState([]);
@@ -27,12 +27,7 @@ export default function Home() {
           <h1 className="text-3xl md:text-6xl mt-4">
             Random Leetcode Question
           </h1>
-          <div className=" h-full flex items-end cursor-pointer">
-            <FaRegPlusSquare
-              size={48}
-              onClick={() => console.log("clicked!")}
-            />
-          </div>
+          <AddQuestion />
         </div>
         <div className="w-1/2">
           <h2 className="text-4xl text-center mb-4">Topics</h2>

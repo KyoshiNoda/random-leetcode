@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
-import { Filters, Question } from "../types";
+import { AddQuestion, Filters, Question } from "../globals/types";
 const pb = new PocketBase("http://127.0.0.1:8090");
 
 const buildFilterQuery = (filters: Filters) => {
@@ -28,7 +28,6 @@ export const getFilteredQuestions = async (
     filter: filterQuery,
     sort: "-created",
   });
-  console.log(records);
   return records;
 };
 
@@ -42,4 +41,14 @@ export const getRandomQuestion = async (
 
   const randomIndex = Math.floor(Math.random() * questions.length);
   return questions[randomIndex];
+};
+
+export const addQuestion = async (question: AddQuestion) => {
+  await pb.admins.authWithPassword(
+    `${import.meta.env.VITE_POCKETBASE_USERNAME}`,
+    `${import.meta.env.VITE_POCKETBASE_PASSWORD}`
+  );
+  const record = await pb.collection('questions').create(question);
+  console.log(record);
+
 };
