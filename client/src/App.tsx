@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col h-screen w-screen bg-gradient-to-t from-color1 to-color2 items-center gap-20 text-white">
+      <div className="flex flex-col h-screen w-screen bg-gradient-to-t from-color1 to-color2 items-center gap-12 text-white">
         <h1 className="text-3xl md:text-6xl mt-4">Random Leetcode Question</h1>
         <div className="w-1/2">
           <h2 className="text-4xl text-center mb-4">Topics</h2>

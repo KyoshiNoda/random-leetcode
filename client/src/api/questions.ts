@@ -4,7 +4,7 @@ const pb = new PocketBase("http://127.0.0.1:8090");
 
 const buildFilterQuery = (filters: Filters) => {
   const filterConditions = Object.entries(filters)
-    .filter(([_, value]) => value !== null && value !== "")
+    .filter(([_, value]) => value !== null && value !== "" && value.length > 0)
     .map(([key, value]) => {
       if (Array.isArray(value)) {
         return `(${value.map((item) => `${key}~"${item}"`).join(" || ")})`;
@@ -23,7 +23,6 @@ export const getFilteredQuestions = async (
     `${import.meta.env.VITE_POCKETBASE_PASSWORD}`
   );
   const filterQuery = buildFilterQuery(filters);
-  console.log(filterQuery);
 
   const records = await pb.collection("questions").getFullList<Question>({
     filter: filterQuery,

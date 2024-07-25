@@ -6,17 +6,34 @@ const DifficultyFilter = ({
 
   return (
     <div className="flex gap-3 flex-wrap">
-      {difficulties.map((difficulty) => (
-        <span
-          key={difficulty}
-          className={`cursor-pointer ${
-            selectedDifficulty === difficulty ? "bg-blue-400" : "bg-gray-100"
-          } text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded border`}
-          onClick={() => setSelectedDifficulty(difficulty)}
-        >
-          {difficulty}
-        </span>
-      ))}
+      {difficulties.map((difficulty) => {
+        let bgColor;
+        switch (difficulty) {
+          case "easy":
+            bgColor = "bg-green-400";
+            break;
+          case "medium":
+            bgColor = "bg-yellow-400";
+            break;
+          case "hard":
+            bgColor = "bg-red-400";
+            break;
+          default:
+            bgColor = "bg-gray-100";
+        }
+
+        return (
+          <span
+            key={difficulty}
+            className={`cursor-pointer ${bgColor} ${
+              selectedDifficulty === difficulty ? "ring-4 ring-blue-600" : ""
+            } text-black text-md font-medium me-2 px-3 py-1 rounded`}
+            onClick={() => setSelectedDifficulty(difficulty)}
+          >
+            {difficulty}
+          </span>
+        );
+      })}
     </div>
   );
 };

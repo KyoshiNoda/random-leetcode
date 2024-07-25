@@ -3,17 +3,34 @@ const ComfortFilter = ({ selectedComfort, setSelectedComfort }: any) => {
 
   return (
     <div className="flex gap-3 flex-wrap">
-      {comforts.map((comfort) => (
-        <span
-          key={comfort}
-          className={`cursor-pointer ${
-            selectedComfort === comfort ? "bg-blue-400" : "bg-gray-100"
-          } text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded border`}
-          onClick={() => setSelectedComfort(comfort)}
-        >
-          {comfort}
-        </span>
-      ))}
+      {comforts.map((comfort) => {
+        let bgColor;
+        switch (comfort) {
+          case "low":
+            bgColor = "bg-green-400";
+            break;
+          case "medium":
+            bgColor = "bg-yellow-400";
+            break;
+          case "high":
+            bgColor = "bg-red-400";
+            break;
+          default:
+            bgColor = "bg-gray-100";
+        }
+
+        return (
+          <span
+            key={comfort}
+            className={`cursor-pointer ${bgColor} ${
+              selectedComfort === comfort ? "ring-4 ring-blue-600" : ""
+            } text-black text-md font-medium me-2 px-2 py-1 rounded`}
+            onClick={() => setSelectedComfort(comfort)}
+          >
+            {comfort}
+          </span>
+        );
+      })}
     </div>
   );
 };
