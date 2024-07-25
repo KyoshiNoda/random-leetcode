@@ -1,16 +1,21 @@
-const ComfortFilter = () => {
+const ComfortFilter = ({ selectedComfort, setSelectedComfort }: any) => {
+  const comforts = ["low", "medium", "high"];
+
   return (
     <div className="flex gap-3 flex-wrap">
-      <span className="bg-red-400 text-xs text-black font-medium me-2 px-2.5 py-0.5 rounded border">
-        Low
-      </span>
-      <span className="bg-yellow-300 text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded border ">
-        Medium
-      </span>
-      <span className="bg-green-600 text-xs  text-black font-medium me-2 px-2.5 py-0.5 rounded border">
-        High
-      </span>
+      {comforts.map((comfort) => (
+        <span
+          key={comfort}
+          className={`cursor-pointer ${
+            selectedComfort === comfort ? "bg-blue-400" : "bg-gray-100"
+          } text-black text-xs font-medium me-2 px-2.5 py-0.5 rounded border`}
+          onClick={() => setSelectedComfort(comfort)}
+        >
+          {comfort}
+        </span>
+      ))}
     </div>
   );
 };
+
 export default ComfortFilter;

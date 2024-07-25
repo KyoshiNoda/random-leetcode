@@ -2,24 +2,28 @@ import { useState, useEffect } from "react";
 import { getRandomQuestion } from "../api/questions";
 import { Question } from "../types";
 
-const QuestionResult = () => {
+const QuestionResult = ({ filters }: any) => {
   const [question, setQuestion] = useState<Question | null>(null);
 
   useEffect(() => {
     const fetchQuestion = async () => {
-      const randomQuestion = await getRandomQuestion({
-        difficulty: "easy",
-      });
-      setQuestion(randomQuestion);
+      const result = await getRandomQuestion(filters);
+      setQuestion(result);
     };
 
-    fetchQuestion();
-  }, []);
+    if (Object.keys(filters).length > 0) {
+      fetchQuestion();
+    }
+  }, [filters]);
 
   return (
-    <a className="text-black text-3xl bg-white p-3" href={question?.link}>
-      {question?.name}
-    </a>
+    <div className="text-black text-3xl bg-white p-3">
+      {question ? (
+        <a href={question.link}>{question.name}</a>
+      ) : (
+        <p>No question found</p>
+      )}
+    </div>
   );
 };
 

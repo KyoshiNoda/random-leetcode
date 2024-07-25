@@ -3,12 +3,14 @@ import { Filters, Question } from "../types";
 const pb = new PocketBase("http://127.0.0.1:8090");
 
 const buildFilterQuery = (filters: Filters) => {
-  const filterConditions = Object.entries(filters).map(([key, value]) => {
-    if (Array.isArray(value)) {
-      return value.map((item) => `${key}~"${item}"`).join(" || ");
-    }
-    return `${key}="${value}"`;
-  });
+  const filterConditions = Object.entries(filters)
+    .filter(([_, value]) => value !== null && value !== "")
+    .map(([key, value]) => {
+      if (Array.isArray(value)) {
+        return `(${value.map((item) => `${key}~"${item}"`).join(" || ")})`;
+      }
+      return `${key}="${value}"`;
+    });
 
   return filterConditions.join(" && ");
 };
@@ -21,12 +23,13 @@ export const getFilteredQuestions = async (
     `${import.meta.env.VITE_POCKETBASE_PASSWORD}`
   );
   const filterQuery = buildFilterQuery(filters);
+  console.log(filterQuery);
 
   const records = await pb.collection("questions").getFullList<Question>({
     filter: filterQuery,
     sort: "-created",
   });
-
+  console.log(records);
   return records;
 };
 
